@@ -12,10 +12,25 @@ My take on a simple HTTP Façade for easy request making.
 <dependency>
     <groupId>xyz.luan</groupId>
     <artifactId>http-facade</artifactId>
-    <version>1.3</version>
+    <version>1.5.1</version>
 </dependency>
 ```
 
 ## Examples
 
-TODO
+Simple get:
+
+```java
+    Response r = new HttpFacade("www.google.com").get();
+    r.status() // 200
+    r.content() // <html>...
+```
+
+More complex request:
+
+```java
+    new HttpFacade("luan.xyz/api/people")
+        .header("key", "value")
+        .body("{ id: 42, name: \"Luan\" }")
+    .post();
+```
